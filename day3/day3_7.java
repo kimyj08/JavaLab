@@ -1,3 +1,4 @@
+package day3;
 import java.util.Scanner;
 
 public class day3_7 {
@@ -5,7 +6,7 @@ public class day3_7 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("*À» Ãâ·ÂÇÒ ¶óÀÎÀÇ ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.>");
+        System.out.print("*ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.>");
         
         int star = scanner.nextInt();
 
