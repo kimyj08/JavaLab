@@ -13,8 +13,6 @@ public class day5_6 {
 				max = score[i];
 			} else if(min>score[i]) {
 				min = score[i];
-			} else {
-				break;
 			}
 		}		
 		System.out.println("최대값 : "+max);
