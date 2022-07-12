@@ -9,7 +9,7 @@ public class SCV extends GroundUnit implements Repairable{
 		if(r instanceof Unit) {
 			Unit u = (Unit)r;
 			while(u.hitPoint!=u.MAX_HP) {
-				/* Unit의 HP를 증가시킨다.*/
+				/* Unit의 HP를 증가시킨다. */
 				u.hitPoint++;
 			}
 			System.out.println(u.toString()+"의 수리가 끝났습니다.");
