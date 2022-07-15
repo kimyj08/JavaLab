@@ -1,4 +1,3 @@
-package day11_8;
 
 import java.util.*;
 
@@ -28,12 +27,12 @@ public class ExpValidCheck {
 			}
 			
 			if(st.isEmpty()) {
-				System.out.println("괄호가 일치합니다.");
+				System.out.println("correct");
 			} else {
-				System.out.println("괄호가 일치하지 않습니다.");
+				System.out.println("incorrect");
 			}
 		} catch (EmptyStackException e) {
-			System.out.println("괄호가 일치하지 않습니다.");
+			System.out.println("incorrect");
 		}
 
 	}
