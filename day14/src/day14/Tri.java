@@ -10,7 +10,6 @@ public class Tri {
 		
 		System.out.println(area);
 		
-
 	}
 
 }
