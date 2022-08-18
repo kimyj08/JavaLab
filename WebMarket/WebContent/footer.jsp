@@ -7,9 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<footer class="container">
-		<p>&copy; JULIA</p>
-	</footer>
+
+	<div class="navbar navbar-dark p-0 bg-secondary fixed-bottom">
+		<div class="container-fluid py-3">
+			<span class="navbar-brand mb-0 h1 text-info">&copy; JULIA</span>
+		</div>
+	</div>
 	
 	<!-- JavaScript Bundle with Popper -->
 	<script

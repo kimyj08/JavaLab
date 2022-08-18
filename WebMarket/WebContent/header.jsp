@@ -14,7 +14,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-dark bg-dark p-0 navbar-sticky-top">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="welcome.jsp">Home</a>

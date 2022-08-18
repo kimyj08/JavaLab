@@ -8,30 +8,7 @@ import javax.naming.NamingException;
 
 import util.*;
 
-public class DAOmember {
-
-	// C create R read U update D delete
-	
-	// 회원 가입 ( 테이블에 데이터 넣기 )
-	public static int join(String mname, String mtel) throws NamingException, SQLException {
-		Connection conn=null;
-		PreparedStatement stmt=null;
-		int result=0;
-		
-		String sql="INSERT INTO member (mname,mtel) VALUES(?,?)";
-		
-		// Connection Pool 이용
-		conn=ConnectionPool.get();  // 예외처리를 강제하는 애들. 예외처리도 처리해주자.
-		
-		stmt=conn.prepareStatement(sql);
-			stmt.setString(1,mname);
-			stmt.setString(2,mtel);
-			
-		result=stmt.executeUpdate();
-		// 결과가 성공 1과 실패 2로 넘어온다.( 성공했는지 1, 실패했는지 2 )
-		
-		return result;
-	}
+public class DAOboard0818 {
 	
 	public static int boardinsert(String title, String content, String iname) throws NamingException, SQLException {
 
@@ -53,7 +30,7 @@ public class DAOmember {
 		
 	}
 	
-	public static ArrayList<DTOboard> getList() throws NamingException, SQLException {
+	public static ArrayList<DTOboard0818> getList() throws NamingException, SQLException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -65,10 +42,10 @@ public class DAOmember {
 		stmt=conn.prepareStatement(sql);
 		rs=stmt.executeQuery();
 		
-		ArrayList<DTOboard> b=new ArrayList<DTOboard>();
+		ArrayList<DTOboard0818> b=new ArrayList<DTOboard0818>();
 		
 		while(rs.next()) {
-			b.add(new DTOboard(rs.getString(1),
+			b.add(new DTOboard0818(rs.getString(1),
 							   rs.getString(2),
 							   rs.getString(3),
 							   rs.getString(4),
@@ -78,7 +55,7 @@ public class DAOmember {
 		return b;
 	}
 	
-	public static DTOboard getDetail(String bid) throws SQLException, NamingException {
+	public static DTOboard0818 getDetail(String bid) throws SQLException, NamingException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -99,7 +76,7 @@ public class DAOmember {
 		String iname=rs.getString(4);
 		String bdate=rs.getString(5);
 		
-		DTOboard board=new DTOboard(bid,title,content,iname,bdate);
+		DTOboard0818 board=new DTOboard0818(bid,title,content,iname,bdate);
 		
 		return board;
 		
