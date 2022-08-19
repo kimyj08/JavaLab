@@ -3,28 +3,21 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.time.*" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<!-- CSS only -->
-<!-- <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous"> -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- include summernote css/js-->
+    <link href="summernote-bs5.css" rel="stylesheet">
+    <script src="summernote-bs5.js"></script>
 </head>
 <body>
 
 <%@ include file="header.jsp" %>
-	<!-- <nav class="navbar navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="welcome.jsp">Home</a>
-			</div>
-		</div>
-	</nav> -->
 
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
@@ -35,14 +28,7 @@
 	</div>
 	
 	<div class="container">
-		<form action="productinput0819.jsp" method="post">
-			
-			<div class="form-group row">
-				<label class="col-sm-2">제품ID</label>
-				<div class="col-sm-3">
-					<input name="pid" type="text" class="form-control" placeholder="제품 아이디를 입력하세요">
-				</div>
-			</div>
+		<form action="productinput0819.jsp" method="post" enctype="multipart/form-data">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">제품명</label>
@@ -58,10 +44,37 @@
 				</div>
 			</div>
 			
+				    <div id="summernote"></div>
+				    <script>
+				      $('#summernote').summernote({
+				        placeholder: 'Hello Bootstrap 5',
+				        tabsize: 2,
+				        height: 100
+				      });
+				    </script>
+			
 			<div class="form-group row">
 				<label class="col-sm-2">제품가격</label>
 				<div class="col-sm-3">
 					<input name="pprice" type="text" class="form-control" placeholder="제품 가격을 입력하세요">
+				</div>
+			</div>			
+			
+			<div class="form-group row">
+				<div class="col-sm-5">
+				  <input type="file" name="image1" class="form-control" id="inputGroupFile02">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-sm-5">
+				  <input type="file" name="image2" class="form-control" id="inputGroupFile02">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-sm-5">
+				  <input type="file" name="image3" class="form-control" id="inputGroupFile02">
 				</div>
 			</div>
 			
@@ -76,15 +89,6 @@
 	</div>
 
 <%@ include file="footer.jsp" %>
-	<!-- <footer class="container">
-		<p>&copy; JULIA</p>
-	</footer> -->
 
-
-	<!-- JavaScript Bundle with Popper -->
-	<!-- <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-		crossorigin="anonymous"></script> -->
 </body>
 </html>

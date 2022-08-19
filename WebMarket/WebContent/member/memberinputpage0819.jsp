@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 	<!-- <nav class="navbar navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
@@ -29,39 +29,31 @@
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
 			<h1 class="display-3">
-				제품 등록
+				Member List
 			</h1>
 		</div>
 	</div>
 	
 	<div class="container">
-		<form action="productinput0819.jsp" method="post">
+		<form action="memberinput0819.jsp" method="post" enctype="multipart/form-data">
 			
 			<div class="form-group row">
-				<label class="col-sm-2">제품ID</label>
+				<label class="col-sm-2">멤버 이름</label>
 				<div class="col-sm-3">
-					<input name="pid" type="text" class="form-control" placeholder="제품 아이디를 입력하세요">
+					<input name="mname" type="text" class="form-control" placeholder="이름을 입력하세요">
 				</div>
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-sm-2">제품명</label>
+				<label class="col-sm-2">전화번호</label>
 				<div class="col-sm-3">
-					<input name="pname" type="text" class="form-control" placeholder="제품명을 입력하세요">
+					<input name="mtel" type="text" class="form-control" placeholder="전화번호를 입력하세요">
 				</div>
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-sm-2">제품설명</label>
-				<div class="col-sm-3">
-					<textarea name="pdesc" rows="5" cols="20" class="form-control" placeholder="제품 설명을 입력하세요"></textarea>
-				</div>
-			</div>
-			
-			<div class="form-group row">
-				<label class="col-sm-2">제품가격</label>
-				<div class="col-sm-3">
-					<input name="pprice" type="text" class="form-control" placeholder="제품 가격을 입력하세요">
+				<div class="col-sm-5">
+				  <input type="file" name="image" class="form-control" id="inputGroupFile02">
 				</div>
 			</div>
 			
@@ -75,7 +67,7 @@
 		</form>
 	</div>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 	<!-- <footer class="container">
 		<p>&copy; JULIA</p>
 	</footer> -->
