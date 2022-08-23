@@ -1,10 +1,14 @@
+<%@page import="db.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	out.print("<script>alert('정말 탈퇴하시겠습니까?');</script>");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>본인확인</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,7 +21,7 @@
 		<div class="container">
 		
 			<h1 class = "display-3">
-				LOGIN
+				MEMBER OUT
 			</h1>
 		</div>	
 	</div>
@@ -27,12 +31,12 @@
 	<div class="container" style="max-width:330px">
     
 		<main class="form-signin">
-		  <form action="logincheck0822.jsp">
+		  <form action="memberoutcheck0822.jsp">
 		  	<div class="d-flex justify-content-center">
 		    	<img class="mb-4 rounded" src="https://cdn.indiepost.co.kr/uploads/images/2018/09/20/6onQxy-700x541.jpeg" alt="" width="72" height="57">
 		    </div>
 		    	
-		<h1 class="h3 mb-3 fw-normal text-center">로그인 하세요.</h1>
+		<h1 class="h3 mb-3 fw-normal text-center">탈퇴하려면 비밀번호를 입력하세요.</h1>
 		
 		    <div class="form-floating">
 		      <input type="text" name="mname" class="form-control" id="floatingInput" placeholder="id">
@@ -44,18 +48,9 @@
 		    </div>
 		    
 		    <br>
-		
-		<div class="d-flex justify-content-center">
-		    <div class="checkbox mb-3">
-		      <label>
-		        <input type="checkbox" value="remember-me"> LOGIN REMEMBER
-		      </label>
-		</div>
-    </div>
-		    
-		    <button class="w-100 btn btn-lg btn-primary" type="submit">LOGIN</button>
+		    	    
+		    <button class="w-100 btn btn-lg btn-primary" type="submit">탈퇴하기</button>
 		    <br><br>
-		    <img src="http://papaspick.com/web/upload/2019_web/icon/kakao_login.jpg" height="60" width="305px" class="rounded" hreg="#">
 		    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017–2022</p>
 		  </form>
 		</main>

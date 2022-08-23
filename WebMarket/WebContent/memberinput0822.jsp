@@ -61,6 +61,8 @@
 	
 	DAOmember0822.join(mname,mpass,mtel,memail,mgender,maddr,miname);
 	
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("loginpage0822.jsp");
+	
+	// out.print("<script>alert('회원가입 성공! 환영합니다 :D');</script>");
 			
 %>

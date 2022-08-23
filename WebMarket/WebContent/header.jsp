@@ -84,13 +84,13 @@
 	        <button class="btn btn-outline-info" type="submit">Search</button>
 	      </form> --> 
 	      <div class="text-white">
-		      <%-- <%
+		    <%-- <%
 			      if(login) {
 			    	  out.print(mname+"님 로그인 상태입니다.");
 			      } else {
 			    	  out.print("방문을 환영합니다.로그인 하세요.");
 			      }
-		      %> --%> 
+		      %> --%>
 	      </div> 
 	      	
 	    </div>

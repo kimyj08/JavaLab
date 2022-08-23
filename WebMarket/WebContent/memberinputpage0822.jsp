@@ -34,7 +34,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2">PASSWORD</label>
 				<div class="col-sm-8">
-					<input name="mpass" type="text" class="form-control" placeholder="비밀번호를 입력하세요">
+					<input name="mpass" type="password" class="form-control" placeholder="비밀번호를 입력하세요">
 				</div>
 			</div>
 			
@@ -74,7 +74,8 @@
 			</div>
 			
 			<div class="form-group row">
-				<div class="col-sm-10">
+				<label class="col-sm-2">IMAGE UPLOAD</label>
+				<div class="col-sm-8">
 				  <input type="file" name="image" class="form-control" id="inputGroupFile02">
 				</div>
 			</div>
