@@ -67,6 +67,6 @@
 	
 	DAOproduct0819.insert(pname,pdesc,pprice,pfilename1,pfilename2,pfilename3);
 	
-	response.sendRedirect("productlist.jsp");
+	response.sendRedirect("productlist0822.jsp");
 			
 %>

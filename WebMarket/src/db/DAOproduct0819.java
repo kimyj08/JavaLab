@@ -27,6 +27,9 @@ public class DAOproduct0819 {
 			
 		int result=pstmt.executeUpdate();
 		
+		pstmt.close();
+		conn.close();
+		
 		return result;
 	}	
 	
@@ -53,6 +56,10 @@ public class DAOproduct0819 {
 							   rs.getString(6),
 							   rs.getString(7)));
 		}
+		
+		rs.close();
+		stmt.close();
+		conn.close();
 		
 		return p;
 		
@@ -82,6 +89,10 @@ public class DAOproduct0819 {
 		String pfilename3=rs.getString(7);
 		
 		DTOproduct0819 product=new DTOproduct0819(pid,pname,pdesc,pprice,pfilename1,pfilename2,pfilename3);
+		
+		rs.close();
+		stmt.close();
+		conn.close();
 		
 		return product;
 		

@@ -21,8 +21,6 @@
 	</div>
 	
 <%
-	String mname=(String)session.getAttribute("mname");
-
 	DTOmember0822 member=DAOmember0822.getDetail(mname);
 %>
 	

@@ -8,6 +8,8 @@
 </head>
 <body>
 
+	<br><br><br>
+
 	<div class="navbar navbar-dark p-0 bg-secondary fixed-bottom">
 		<div class="container-fluid py-3">
 			<span class="navbar-brand mb-0 h1 text-info">&copy; JULIA</span>

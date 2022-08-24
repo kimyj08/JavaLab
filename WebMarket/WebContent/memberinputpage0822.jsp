@@ -23,7 +23,6 @@
 	
 	<div class="container">
 		<form action="memberinput0822.jsp" method="post" enctype="multipart/form-data">
-			
 			<div class="form-group row">
 				<label class="col-sm-2">ID</label>
 				<div class="col-sm-8">

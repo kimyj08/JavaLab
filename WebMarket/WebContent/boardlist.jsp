@@ -4,17 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.time.*" %>
-<%
-	String mname=(String)session.getAttribute("mname");
-
-	if(mname==null) {
-		out.print("<script>alert('로그인이 필요합니다.');</script>");
-		out.print("<script>location.href='loginpage0822.jsp'</script>");
-	}
-	
-	boolean login=true;
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +14,13 @@
 <body>
 
 <%@ include file="../header.jsp" %>
+
+<%
+	if(mname==null) {
+		out.print("<script>alert('로그인이 필요합니다.');</script>");
+		out.print("<script>location.href='loginpage0822.jsp'</script>");
+	}
+%>
 
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">

@@ -26,6 +26,32 @@ public class DAOboard0822 {
 			
 		int result=stmt.executeUpdate();
 		
+		stmt.close();
+		conn.close();
+		
+		return result;
+		
+	}
+	
+	public static int boardupdate(String title, String content, String bid) throws NamingException, SQLException {
+
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		
+		String sql="UPDATE board SET title=?,content=? WHERE bid=?";
+		
+		conn=ConnectionPool.get();
+		
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1,title);
+			stmt.setString(2,content);
+			stmt.setString(3,bid);
+			
+		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
+		
 		return result;
 		
 	}
@@ -52,6 +78,10 @@ public class DAOboard0822 {
 							   rs.getString(5)));
 		}
 		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
 		return b;
 	}
 	
@@ -77,6 +107,10 @@ public class DAOboard0822 {
 		String bdate=rs.getString(5);
 		
 		DTOboard0822 board=new DTOboard0822(bid,title,content,author,bdate);
+		
+		rs.close();
+		stmt.close();
+		conn.close();
 		
 		return board;
 		

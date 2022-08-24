@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
@@ -27,6 +28,9 @@ public class DAOmember0822 {
 			stmt.setString(7,miname);
 			
 		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
 		
 		return result;
 
@@ -59,6 +63,40 @@ public class DAOmember0822 {
 		
 	}
 	
+	public static ArrayList<DTOmember0822> getList() throws NamingException, SQLException {
+		
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT * FROM member";
+		
+		conn=ConnectionPool.get();
+		stmt=conn.prepareStatement(sql);
+		rs=stmt.executeQuery();
+		
+		ArrayList<DTOmember0822> m=new ArrayList<DTOmember0822>();
+		
+		while(rs.next()) {
+			m.add(new DTOmember0822(rs.getString(1),
+							   rs.getString(2),
+							   rs.getString(3),
+							   rs.getString(4),
+							   rs.getString(5),
+							   rs.getString(6),
+							   rs.getString(7),
+							   rs.getString(8),
+							   rs.getString(9),
+							   rs.getString(10)));
+		}
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return m;
+	}
+	
 	public static DTOmember0822 getDetail(String mname) throws SQLException, NamingException {
 		
 		Connection conn=null;
@@ -87,6 +125,10 @@ public class DAOmember0822 {
 		
 		DTOmember0822 member=new DTOmember0822(mno,mname,mpass,mtel,memail,mgender,maddr,mlevel,miname,mdate);
 		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
 		return member;
 		
 	}
@@ -105,6 +147,9 @@ public class DAOmember0822 {
 			stmt.setString(2,mpass);
 			
 		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
 		
 		return result;
 

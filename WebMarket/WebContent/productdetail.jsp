@@ -1,17 +1,6 @@
 <%@page import="db.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String mname=(String)session.getAttribute("mname");
-
-	if(mname==null) {
-		out.print("<script>alert('로그인이 필요합니다.');</script>");
-		out.print("<script>location.href='loginpage0822.jsp'</script>");
-	}
-	
-	boolean login=true;
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +10,13 @@
 <body>
 
 <%@ include file="../header.jsp" %>
+
+<%
+	if(mname==null) {
+		out.print("<script>alert('로그인이 필요합니다.');</script>");
+		out.print("<script>location.href='loginpage0822.jsp'</script>");
+	}
+%>
 
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
@@ -59,9 +55,9 @@
 	}
 %>
 
-	<%-- <img src="<%=imgstr1 %>" class="rounded mx-auto d-block" alt="사진">
+	<img src="<%=imgstr1 %>" class="rounded mx-auto d-block" alt="사진">
 	<img src="<%=imgstr2 %>" class="rounded mx-auto d-block" alt="사진">
-	<img src="<%=imgstr3 %>" class="rounded mx-auto d-block" alt="사진"> --%>
+	<img src="<%=imgstr3 %>" class="rounded mx-auto d-block" alt="사진">
 	
 	<div class="container">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -114,7 +110,8 @@
 	
 		<br><br>
 
-		<a class="btn btn-info" href="productlist.jsp" role="button">목록보기</a><br><br>
+		<a class="btn btn-info" href="productlist0822.jsp" role="button">목록보기</a><br><br>
+		<a class="btn btn-info" href="deliverypage.jsp?pid=<%=product.getPid() %>&pname=<%=product.getPname() %>&pprice=<%=product.getPprice() %>" role="button">구매</a><br><br><br>
 		<a class="btn btn-secondary" href="productinputpage0819.jsp" role="button">등록</a>
 	</div>
 
