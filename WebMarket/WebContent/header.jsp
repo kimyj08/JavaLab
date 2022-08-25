@@ -68,6 +68,7 @@
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="members0822.jsp">회원관리</a></li>
 	            <li><a class="dropdown-item" href="products0822.jsp">제품관리</a></li>
+	            <li><a class="dropdown-item" href="selling0822.jsp">배송관리</a></li>
 	            <li><a class="dropdown-item" href="boards0822.jsp">게시판관리</a></li>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="etcs0822.jsp">기타</a></li>
