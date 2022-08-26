@@ -55,7 +55,10 @@
 		    
 		    <button class="w-100 btn btn-lg btn-primary" type="submit">LOGIN</button>
 		    <br><br>
-		    <img src="http://papaspick.com/web/upload/2019_web/icon/kakao_login.jpg" height="60" width="305px" class="rounded" hreg="#">
+		    <a id="custom-login-btn" href="javascript:kakaoLogin()">
+		    <img src="http://papaspick.com/web/upload/2019_web/icon/kakao_login.jpg" height="60" width="305px" class="rounded" alt="카카오 로그인 버튼">
+		    </a>
+		    
 		    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017–2022</p>
 		  </form>
 		</main>
@@ -63,6 +66,62 @@
 	</div>
 	
 	<br><br>
+	<!-- <script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+	kakao.init("605a56e8514927a9a3f7916a8020a9d4");
+	
+	function kakaoLogin() {
+		window.kakao.Auth.login({
+			// 반드시 카카오 로그인 사이트에 설정한 값과 정확히 일치해야 함.
+			scope:'profile_nickname,profile_image,account_email,gender',
+			success: function (authObj) {
+				console.log(authObj); // 콘솔에서 상태 간단 확인용
+				window.Kakao.API.request({
+					url:'/v2/user/me',
+					success: res=> {
+						const kakaoAccount=res.kakao_account;
+						location.href='kakaocheck.jsp?mname='+kakaoAccount.profile_nickname
+								+'&miname='+kakaoAccount.profile_image
+								+'&memail='+kakaoAccount.account_email
+								+'&mgender='+kakaoAccount.gender;
+					}
+				});
+			}
+		});
+	}
+	</script> -->
+	
+	
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+		// script
+		// 발급 받은 키
+      Kakao.init("605a56e8514927a9a3f7916a8020a9d4");
+
+      function kakaoLogin() {
+        window.Kakao.Auth.login({
+          // 카카오 개발자 사이트의 동의항목에서 설정한 ID와 반드시 일치해야함
+          scope: 'profile_nickname,account_email,gender',
+          success: function (authObj) {
+                console.log(authObj);
+                window.Kakao.API.request({
+                url:'/v2/user/me',
+                success: res => {
+                    const kakaoAccount = res.kakao_account;
+					location.href='kakaocheck.jsp?mname=' + kakaoAccount.profile.nickname
+							+ '&memail=' + kakaoAccount.email
+							+ '&mgender=' + kakaoAccount.gender
+;
+					
+                }
+                });
+
+
+          }
+        });
+      }
+      </script>
+
 
 <%@ include file="footer.jsp" %>
     

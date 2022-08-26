@@ -56,9 +56,32 @@ public class DAOmember0822 {
 		}
 		
 		if(mpass.equals(rs.getString("mpass"))) {
-			return 1;
+			return 1; // 문제 없는 회원.
 		} else {
-			return 2;
+			return 2; // 비번이 틀린 회원.
+		}
+		
+	}
+	
+	public static int kakaologin(String mname) throws NamingException, SQLException {
+		
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT mname FROM member WHERE mname=?";
+		
+		conn=ConnectionPool.get();
+		
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1, mname);
+			
+		rs=stmt.executeQuery();
+		
+		if(!rs.next()) {
+			return 3; // 아이디, 비번 모두 없는 비회원. -> 회원 가입.
+		} else {
+			return 1; // 없어도 되는데 오류나서 임시로.
 		}
 		
 	}

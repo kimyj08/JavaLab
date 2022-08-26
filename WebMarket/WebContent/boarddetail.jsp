@@ -50,7 +50,7 @@
 		<br><br>
 
 		<a class="btn btn-info" href="boardlist.jsp" role="button">목록보기</a><br><br>
-		<a class="btn btn-warning" href="boardedit.jsp?bid=<%=board.getBid() %>" role="button">수정</a><br><br>
+		<a class="btn btn-warning" href="boardeditpage.jsp?bid=<%=board.getBid() %>" role="button">수정</a><br><br>
 		<a class="btn btn-secondary" href="boardinputpage.jsp" role="button">새 글 작성</a>
 	</div>
 

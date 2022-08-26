@@ -30,6 +30,13 @@
 		</div>
 	</div>
 	
+	<%
+	if(!mname.equals("author")) {
+		out.print("<script>alert('작성자가 달라 수정이 불가합니다.');</script>");
+		out.print("<script>location.href='boarddetail.jsp'</script>");
+	}
+	%>
+	
 	<%-- <%
 	String mname=(String)session.getAttribute("mname");
 
@@ -43,7 +50,7 @@
 	%>
 	
 	<div class="container">
-		<form action="boardinput0822.jsp" method="post">
+		<form action="boardedit0822.jsp" method="post">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">TITLE</label>

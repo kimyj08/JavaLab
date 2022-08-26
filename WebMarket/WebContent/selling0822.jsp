@@ -60,9 +60,23 @@
 		      <td><%=delivery.getDmtel() %></td>
 		      <td><%=delivery.getDpprice() %></td>
 		      <td><%=delivery.getDdate() %></td>
-		      <td><%=delivery.getDstatus() %></td>
-		    </tr>
-		    
+		      <td>
+		      <% 
+		      if(delivery.getDstatus().equals("1")) {
+		      	out.print("[입금전]");
+		      } else if(delivery.getDstatus().equals("2")) {
+		      	out.print("<button onclick='confirm_onClick()' class='btn btn-info'>[입금완료]</button>");
+		      } else if(delivery.getDstatus().equals("3")) {
+		      	out.print("<button onclick='confirm_onClick()' class='btn btn-info'>[배송전]</button>");
+		      } else if(delivery.getDstatus().equals("4")) {
+		      	out.print("[배송중]");
+		      } else {
+		      	out.print("[배송완료]");
+		      }
+		      %>
+		      </td>
+		      
+		    </tr>	    
 <% 
 	}
 %>
@@ -70,7 +84,17 @@
 		  </tbody>
 		</table>
 		
-		<a class="btn btn-info" href="boardinputpage.jsp" role="button">글쓰기</a><br><br>
+		<script>
+			function confirm_onclick() {
+				var answer=confirm("상태를 변경하시겠습니까?");
+				
+				if(answer) {
+					location.href="selingstatus,jsp";
+				}
+			}
+		</script>
+		
+		<!-- <a class="btn btn-info" href="boardinputpage.jsp" role="button">글쓰기</a><br><br> -->
 		
 	</div>
 	
