@@ -32,7 +32,7 @@ public class NaverSMTP {
 	// 네이버 사용자 정보
 	auth=new Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
-			return new PasswordAuthentication("kimyj0226","dPwn0226!!");
+			return new PasswordAuthentication("네이버아이디","비밀번호");
 			}
 		};
 	}
