@@ -9,6 +9,10 @@
 <%@ page import="java.util.*" %>
 
 <%
+	String no=request.getParameter("bid");
+	
+	DTOboard0822 board=DAOboard0822.getDetail(no);
+
 	request.setCharacterEncoding("utf-8");
 	
 	String title=request.getParameter("title");
@@ -17,6 +21,6 @@
 	
 	DAOboard0822.boardupdate(title,content,bid);
 	
-	response.sendRedirect("boarddetail.jsp");
+	response.sendRedirect("boarddetail.jsp?bid");
 			
 %>

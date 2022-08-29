@@ -64,7 +64,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2">AUTHOR</label>
 				<div class="col-sm-8">
-					<input name="author" type="text" class="form-control" value="<%=member.getMname() %>" readonly>
+					<input name="author" type="hidden" class="form-control" value="<%=member.getMname() %>">
 				</div>
 			</div>
 			<br>

@@ -9,13 +9,17 @@
 <%@ page import="java.util.*" %>
 
 <%
+	String no=request.getParameter("bid");
+	
+	DTOboard board=DAOboard.getDetail(no);
+
 	request.setCharacterEncoding("utf-8");
 	
-	String title=request.getParameter("title");
-	String content=request.getParameter("content");
-	String author=request.getParameter("author");
+	String btitle=request.getParameter("btitle");
+	String bcontent=request.getParameter("bcontent");
+	String bid=request.getParameter("bid");
 	
-	DAOboard0822.boardinsert(title,content,author);
+	DAOboard.boardupdate(btitle,bcontent,bid);
 	
 	response.sendRedirect("boarddetail.jsp?bid");
 			

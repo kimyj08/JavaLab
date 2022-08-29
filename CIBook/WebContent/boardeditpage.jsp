@@ -33,19 +33,13 @@
 	<%
 	String no=request.getParameter("bid");
 
-	DTOboard0822 board=DAOboard0822.getDetail(no);
+	DTOboard board=DAOboard.getDetail(no);
 	
-	if(!mname.equals(board.getAuthor())) {
+	if(!mnick.equals(board.getBauthor())) {
 		out.print("<script>alert('작성자가 달라 수정이 불가합니다.');</script>");
 		out.print("<script>location.href='boarddetail.jsp?bid'</script>");
 	}
 	%>
-	
-	<%-- <%
-	String mname=(String)session.getAttribute("mname");
-
-	DTOboard0822 board=DAOboard0822.getDetail(mname);
-	%> --%>
 	
 	<div class="container">
 		<form action="boardedit0822.jsp" method="post">
@@ -55,14 +49,14 @@
 			<div class="form-group row">
 				<label class="col-sm-2">TITLE</label>
 				<div class="col-sm-8">
-					<input name="title" type="text" class="form-control" value="<%=board.getTitle() %>">
+					<input name="btitle" type="text" class="form-control" value="<%=board.getBtitle() %>">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">CONTENT</label>
 				<div class="col-sm-8">
-						<textarea id="summernote" class="col-sm-8" name="content"><%=board.getContent() %></textarea>
+						<textarea id="summernote" class="col-sm-8" name="bcontent"><%=board.getBcontent() %></textarea>
 					</div>
 					<script>
 					$(document).ready(function() {
@@ -79,7 +73,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2">AUTHOR</label>
 				<div class="col-sm-8">
-					<input name="author" type="hidden" class="form-control" value="<%=board.getAuthor() %>">
+					<input name="author" type="hidden" class="form-control" value="<%=board.getBauthor() %>">
 				</div>
 			</div>
 			<br>

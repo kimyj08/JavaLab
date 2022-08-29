@@ -11,12 +11,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
-	String title=request.getParameter("title");
-	String content=request.getParameter("content");
-	String author=request.getParameter("author");
+	String btitle=request.getParameter("btitle");
+	String bcontent=request.getParameter("bcontent");
+	String bauthor=request.getParameter("bauthor");
 	
-	DAOboard0822.boardinsert(title,content,author);
+	DAOboard.boardinsert(btitle,bcontent,bauthor);
 	
-	response.sendRedirect("boarddetail.jsp?bid");
+	response.sendRedirect("boardlist.jsp");
 			
 %>

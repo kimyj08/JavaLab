@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Board_INPUT</title>
+<title>게시물 작성</title>
 <!-- 서머노트를 위해 추가해야할 부분 -->
 
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
@@ -31,45 +31,30 @@
 	</div>
 	
 	<%
-	String no=request.getParameter("bid");
-
-	DTOboard0822 board=DAOboard0822.getDetail(no);
-	
-	if(!mname.equals(board.getAuthor())) {
-		out.print("<script>alert('작성자가 달라 수정이 불가합니다.');</script>");
-		out.print("<script>location.href='boarddetail.jsp?bid'</script>");
-	}
+	DTOmember member=DAOmember.getDetail(mnick);
 	%>
 	
-	<%-- <%
-	String mname=(String)session.getAttribute("mname");
-
-	DTOboard0822 board=DAOboard0822.getDetail(mname);
-	%> --%>
-	
 	<div class="container">
-		<form action="boardedit0822.jsp" method="post">
-		
-		<input name="bid" type="hidden" class="form-control" value="<%=board.getBid() %>">
+		<form action="boardinput.jsp" method="post">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">TITLE</label>
 				<div class="col-sm-8">
-					<input name="title" type="text" class="form-control" value="<%=board.getTitle() %>">
+					<input name="btitle" type="text" class="form-control" placeholder="제목을 입력하세요">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">CONTENT</label>
 				<div class="col-sm-8">
-						<textarea id="summernote" class="col-sm-8" name="content"><%=board.getContent() %></textarea>
+						<textarea id="summernote" class="col-sm-8" name="bcontent"></textarea>
 					</div>
 					<script>
 					$(document).ready(function() {
 						$('#summernote').summernote({
 							  height: 100,                 // 에디터 높이
 							  lang: "ko-KR",					// 한글 설정
-							  placeholder: ''	//placeholder 설정
+							  placeholder: '게시판에 등록할 내용을 적어주세요.'	//placeholder 설정
 						});
 					});
 					</script>
@@ -79,14 +64,14 @@
 			<div class="form-group row">
 				<label class="col-sm-2">AUTHOR</label>
 				<div class="col-sm-8">
-					<input name="author" type="hidden" class="form-control" value="<%=board.getAuthor() %>">
+					<input name="bauthor" type="hidden" class="form-control" value="<%=member.getMnick() %>">
 				</div>
 			</div>
 			<br>
 			
 			<div class="form-group-row">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" class="btn btn-primary" value="수정">
+					<input type="submit" class="btn btn-primary" value="등록">
 					<input type="reset" class="btn btn-danger" value="취소" onclick="reset()">
 				</div>
 			</div>
