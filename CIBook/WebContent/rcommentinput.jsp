@@ -11,11 +11,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
-	String title=request.getParameter("title");
-	String content=request.getParameter("content");
-	String bid=request.getParameter("bid");
+	String rcid=request.getParameter("rcid");
+	String rnick=request.getParameter("rnick");
+	String rcm=request.getParameter("rcm");
 	
-	DAOboard0822.boardupdate(title,content,bid);
+	DAOrcomment.insert(rcid,rnick,rcm);
 	
-	response.sendRedirect("boarddetail.jsp?bid="+bid);
+	response.sendRedirect("cibookdetail.jsp?cid="+rcid);
+	
 %>

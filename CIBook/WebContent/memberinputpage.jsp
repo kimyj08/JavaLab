@@ -22,7 +22,7 @@
 	</div>
 	
 	<div class="container">
-		<form action="memberinput.jsp" method="post">
+		<form action="memberinput.jsp" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label class="col-sm-2">ID(NICKNAME)</label>
 				<div class="col-sm-8">
@@ -64,6 +64,34 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">PROFILE IMAGE</label>
+				<div class="col-sm-8">
+				  <input type="file" name="image" class="form-control" id="inputGroupFile02" onchange="setThumbnail(event);">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">프로필 사진 미리보기</label>
+				<div id="image_container" class="w-100 h-100"></div>
+			</div>
+			
+			<!-- 이미지 미리보기 -->
+			<script>
+			function setThumbnail(event){
+				var reader = new FileReader();
+				
+				reader.onload = function(event){
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#image_container").appendChild(img);
+				};
+				
+				reader.readAsDataURL(event.target.files[0]);
+			}
+			</script>
 			
 			<div class="form-group-row">
 				<div class="col-sm-offset-2 col-sm-10">

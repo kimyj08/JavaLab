@@ -12,6 +12,14 @@
 
 <%@ include file="header.jsp" %>
 
+<%
+	if(mnick==null) {
+		out.print("<script>alert('로그인이 필요합니다.');</script>");
+		out.print("<script>location.href='loginpage.jsp'</script>");
+	} else {
+		DTOmember member=DAOmember.getDetail(mnick);
+%>
+
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
 			<h1 class="display-3">
@@ -20,17 +28,13 @@
 		</div>
 	</div>
 	
-<%
-	DTOmember member=DAOmember.getDetail(mnick);
-%>
-	
 	<div class="container">
-		<form action="memberinput0822.jsp" method="post">
+		<form action="memberedit.jsp" method="post" enctype="multipart/form-data">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">ID</label>
 				<div class="col-sm-8">
-					<input name="mnick" value="<%=member.getMnick() %>" type="text" class="form-control">
+					<input name="mnick" value="<%=member.getMnick() %>" type="text" class="form-control" readonly>
 				</div>
 			</div>
 			
@@ -80,6 +84,53 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">PROFILE IMAGE</label>
+				<div class="col-sm-8">
+				  <input type="file" name="image" class="form-control" id="inputGroupFile02" onchange="setThumbnail(event);">
+				</div>
+			</div>
+			
+			<script>
+				// Get a reference to our file input
+				const fileInput=document.querySelector('input[type="file"]');
+				
+				// Create a new File object
+				const myFile=new File(['Hello World!'],'<%=member.getMiname() %>',{
+					type:'text/plain',
+					lastModified:new Date(),
+				});
+<%
+	}
+%>
+				
+				//Now let's create a DataTransfer to get a Filelist
+				const dataTransfer=new DataTransfer();
+				dataTransfer.items.add(myFile);
+				fileInput.files=dataTransfer.files;
+			</script>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">프로필 사진 미리보기</label>
+				<div id="image_container"></div>
+			</div>
+			
+			<!-- 이미지 미리보기 -->
+			<script>
+			function setThumbnail(event){
+				var reader = new FileReader();
+				
+				reader.onload = function(event){
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#image_container").appendChild(img);
+				};
+				
+				reader.readAsDataURL(event.target.files[0]);
+			}
+			</script>
 			
 			<br>
 			

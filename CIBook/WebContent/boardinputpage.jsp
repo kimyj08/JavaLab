@@ -60,13 +60,7 @@
 					</script>
 			</div>
 			
-			<br>
-			<div class="form-group row">
-				<label class="col-sm-2">AUTHOR</label>
-				<div class="col-sm-8">
 					<input name="bauthor" type="hidden" class="form-control" value="<%=member.getMnick() %>">
-				</div>
-			</div>
 			<br>
 			
 			<div class="form-group-row">

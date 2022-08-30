@@ -9,11 +9,11 @@ import util.*;
 
 public class DAOcibook {
 	
-	public static int insert(String cname, String cbirth, String cgender, String ciname1, String ciname2, String ciname3, String ciname4, String ciname5, String cdesc, String ccolor, String cctgr)throws NamingException, SQLException {
+	public static int insert(String cname, String cbirth, String cgender, String ciname1, String ciname2, String ciname3, String cft, String cdesc, String cowner, String caddr)throws NamingException, SQLException {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
-		String sql="INSERT INTO cibook (cname,cbirth,cgender,ciname1,ciname2,ciname3,ciname4,ciname5,cdesc,ccolor,cctgr) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql="INSERT INTO cibook (cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,cowner,caddr) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		conn=ConnectionPool.get();
 		
@@ -24,11 +24,10 @@ public class DAOcibook {
 			pstmt.setString(4, ciname1);
 			pstmt.setString(5, ciname2);
 			pstmt.setString(6, ciname3);
-			pstmt.setString(7, ciname4);
-			pstmt.setString(8, ciname5);
-			pstmt.setString(9, cdesc);
-			pstmt.setString(10, ccolor);
-			pstmt.setString(11, cctgr);
+			pstmt.setString(7, cft);
+			pstmt.setString(8, cdesc);
+			pstmt.setString(9, cowner);
+			pstmt.setString(10, caddr);
 			
 		int result=pstmt.executeUpdate();
 		
@@ -64,8 +63,44 @@ public class DAOcibook {
 							   rs.getString(9),
 							   rs.getString(10),
 							   rs.getString(11),
-							   rs.getString(12),
-							   rs.getString(13)));
+							   rs.getString(12)));
+		}
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return c;
+		
+	}
+	
+	public static ArrayList<DTOcibook> getMylist() throws NamingException, SQLException {
+		
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT * FROM cibook WHERE cowner=?";
+		
+		conn=ConnectionPool.get();
+		stmt=conn.prepareStatement(sql);
+		rs=stmt.executeQuery();
+		
+		ArrayList<DTOcibook> c=new ArrayList<DTOcibook>();
+		
+		while(rs.next()) {
+			c.add(new DTOcibook(rs.getString(1),
+							   rs.getString(2),
+							   rs.getString(3),
+							   rs.getString(4),
+							   rs.getString(5),
+							   rs.getString(6),
+							   rs.getString(7),
+							   rs.getString(8),
+							   rs.getString(9),
+							   rs.getString(10),
+							   rs.getString(11),
+							   rs.getString(12)));
 		}
 		
 		rs.close();
@@ -98,14 +133,13 @@ public class DAOcibook {
 		String ciname1=rs.getString(5);
 		String ciname2=rs.getString(6);
 		String ciname3=rs.getString(7);
-		String ciname4=rs.getString(8);
-		String ciname5=rs.getString(9);
-		String cdesc=rs.getString(10);
-		String ccolor=rs.getString(11);
-		String cctgr=rs.getString(12);
-		String cdate=rs.getString(13);
+		String cft=rs.getString(8);
+		String cdesc=rs.getString(9);
+		String cowner=rs.getString(10);
+		String cdate=rs.getString(11);
+		String caddr=rs.getString(12);
 		
-		DTOcibook product=new DTOcibook(cid,cname,cbirth,cgender,ciname1,ciname2,ciname3,ciname4,ciname5,cdesc,ccolor,cctgr,cdate);
+		DTOcibook product=new DTOcibook(cid,cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,cowner,cdate,caddr);
 		
 		rs.close();
 		stmt.close();

@@ -37,7 +37,7 @@
 	
 	if(!mname.equals(board.getAuthor())) {
 		out.print("<script>alert('작성자가 달라 수정이 불가합니다.');</script>");
-		out.print("<script>location.href='boarddetail.jsp?bid'</script>");
+		out.print("<script>location.href='boarddetail.jsp?bid="+no+"'</script>");
 	}
 	%>
 	
@@ -50,7 +50,7 @@
 	<div class="container">
 		<form action="boardedit0822.jsp" method="post">
 		
-		<input name="bid" type="hidden" class="form-control" value="<%=board.getBid() %>">
+		<input name="bid" type="hidden" value="<%=board.getBid() %>">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">TITLE</label>
@@ -75,13 +75,7 @@
 					</script>
 			</div>
 			
-			<br>
-			<div class="form-group row">
-				<label class="col-sm-2">AUTHOR</label>
-				<div class="col-sm-8">
-					<input name="author" type="hidden" class="form-control" value="<%=board.getAuthor() %>">
-				</div>
-			</div>
+					<input name="author" type="hidden" value="<%=board.getAuthor() %>">
 			<br>
 			
 			<div class="form-group-row">

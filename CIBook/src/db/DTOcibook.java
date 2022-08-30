@@ -9,11 +9,10 @@ public class DTOcibook {
 	private String ciname1;
 	private String ciname2;
 	private String ciname3;
-	private String ciname4;
-	private String ciname5;
+	private String cft;
 	private String cdesc;
-	private String ccolor;
-	private String cctgr;
+	private String cowner;
+	private String caddr;
 	private String cdate;
 	
 	public String getCid() {
@@ -58,17 +57,11 @@ public class DTOcibook {
 	public void setCiname3(String ciname3) {
 		this.ciname3 = ciname3;
 	}
-	public String getCiname4() {
-		return ciname4;
+	public String getCft() {
+		return cft;
 	}
-	public void setCiname4(String ciname4) {
-		this.ciname4 = ciname4;
-	}
-	public String getCiname5() {
-		return ciname5;
-	}
-	public void setCiname5(String ciname5) {
-		this.ciname5 = ciname5;
+	public void setCft(String cft) {
+		this.cft = cft;
 	}
 	public String getCdesc() {
 		return cdesc;
@@ -76,17 +69,17 @@ public class DTOcibook {
 	public void setCdesc(String cdesc) {
 		this.cdesc = cdesc;
 	}
-	public String getCcolor() {
-		return ccolor;
+	public String getCowner() {
+		return cowner;
 	}
-	public void setCcolor(String ccolor) {
-		this.ccolor = ccolor;
+	public void setCowner(String cowner) {
+		this.cowner = cowner;
 	}
-	public String getCctgr() {
-		return cctgr;
+	public String getCaddr() {
+		return caddr;
 	}
-	public void setCctgr(String cctgr) {
-		this.cctgr = cctgr;
+	public void setCaddr(String caddr) {
+		this.caddr = caddr;
 	}
 	public String getCdate() {
 		return cdate;
@@ -96,7 +89,7 @@ public class DTOcibook {
 	}
 	
 	public DTOcibook(String cid, String cname, String cbirth, String cgender, String ciname1, String ciname2,
-			String ciname3, String ciname4, String ciname5, String cdesc, String ccolor, String cctgr, String cdate) {
+			String ciname3, String cft, String cdesc, String cowner, String caddr, String cdate) {
 		super();
 		this.cid = cid;
 		this.cname = cname;
@@ -105,12 +98,11 @@ public class DTOcibook {
 		this.ciname1 = ciname1;
 		this.ciname2 = ciname2;
 		this.ciname3 = ciname3;
-		this.ciname4 = ciname4;
-		this.ciname5 = ciname5;
+		this.cft = cft;
 		this.cdesc = cdesc;
-		this.ccolor = ccolor;
-		this.cctgr = cctgr;
+		this.cowner = cowner;
+		this.caddr = caddr;
 		this.cdate = cdate;
 	}
-
+	
 }

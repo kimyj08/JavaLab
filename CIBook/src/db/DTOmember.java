@@ -8,6 +8,7 @@ public class DTOmember {
 	private String mtel;
 	private String memail;
 	private String mgender;
+	private String miname;
 	private String mlevel;
 	private String mdate;
 	
@@ -47,6 +48,12 @@ public class DTOmember {
 	public void setMgender(String mgender) {
 		this.mgender = mgender;
 	}
+	public String getMiname() {
+		return miname;
+	}
+	public void setMiname(String miname) {
+		this.miname = miname;
+	}
 	public String getMlevel() {
 		return mlevel;
 	}
@@ -60,8 +67,8 @@ public class DTOmember {
 		this.mdate = mdate;
 	}
 	
-	public DTOmember(String mno, String mnick, String mpass, String mtel, String memail, String mgender, String mlevel,
-			String mdate) {
+	public DTOmember(String mno, String mnick, String mpass, String mtel, String memail, String mgender, String miname,
+			String mlevel, String mdate) {
 		super();
 		this.mno = mno;
 		this.mnick = mnick;
@@ -69,6 +76,7 @@ public class DTOmember {
 		this.mtel = mtel;
 		this.memail = memail;
 		this.mgender = mgender;
+		this.miname = miname;
 		this.mlevel = mlevel;
 		this.mdate = mdate;
 	}

@@ -6,17 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도감목록</title>
+<title>내 도감</title>
 
 </head>
 <body>
 
 <%@ include file="../header.jsp" %>
 
+<%
+	if(mnick==null) {
+		out.print("<script>alert('로그인이 필요합니다.');</script>");
+		out.print("<script>location.href='loginpage.jsp'</script>");
+	}
+%>
+
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
 			<h1 class="display-3">
-				CHARACTER ILLUSTRATED BOOK LIST
+				MY CHARACTER ILLUSTRATED BOOK LIST
 			</h1>
 		</div>
 	</div>
@@ -35,7 +42,7 @@
 		  <tbody>
 				    
 <%
-   	ArrayList<DTOcibook> c=DAOcibook.getList();
+   	ArrayList<DTOcibook> c=DAOcibook.getMylist();
 
  		    	for(DTOcibook cibook:c) {
 %>		
@@ -54,6 +61,9 @@
 		    
 		  </tbody>
 		</table>
+		
+		<!-- <a class="btn btn-info" href="boardinputpage.jsp" role="button">글쓰기</a><br><br> -->
+		
 	</div>
 	
 <br><br>

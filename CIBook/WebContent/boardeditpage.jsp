@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Board_INPUT</title>
+<title>Board_detail</title>
 <!-- 서머노트를 위해 추가해야할 부분 -->
 
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
@@ -37,14 +37,14 @@
 	
 	if(!mnick.equals(board.getBauthor())) {
 		out.print("<script>alert('작성자가 달라 수정이 불가합니다.');</script>");
-		out.print("<script>location.href='boarddetail.jsp?bid'</script>");
+		out.print("<script>location.href='boarddetail.jsp?bid="+no+"'</script>");
 	}
 	%>
 	
 	<div class="container">
-		<form action="boardedit0822.jsp" method="post">
+		<form action="boardedit.jsp" method="post">
 		
-		<input name="bid" type="hidden" class="form-control" value="<%=board.getBid() %>">
+		<input name="bid" type="hidden" value="<%=board.getBid() %>">
 			
 			<div class="form-group row">
 				<label class="col-sm-2">TITLE</label>
@@ -69,19 +69,14 @@
 					</script>
 			</div>
 			
-			<br>
-			<div class="form-group row">
-				<label class="col-sm-2">AUTHOR</label>
-				<div class="col-sm-8">
-					<input name="author" type="hidden" class="form-control" value="<%=board.getBauthor() %>">
-				</div>
-			</div>
+					<input name="author" type="hidden" value="<%=board.getBauthor() %>">
 			<br>
 			
 			<div class="form-group-row">
 				<div class="col-sm-offset-2 col-sm-10">
 					<input type="submit" class="btn btn-primary" value="수정">
 					<input type="reset" class="btn btn-danger" value="취소" onclick="reset()">
+					<a class="btn btn-info" href="boardlist.jsp" role="button">목록보기</a><br><br>
 				</div>
 			</div>
 		

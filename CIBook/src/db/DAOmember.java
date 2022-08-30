@@ -9,12 +9,12 @@ import util.*;
 
 public class DAOmember {
 	
-	public static int join(String mnick, String mpass, String mtel, String memail, String mgender) throws NamingException, SQLException {
+	public static int join(String mnick, String mpass, String mtel, String memail, String mgender, String miname) throws NamingException, SQLException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		
-		String sql="INSERT INTO member (mnick,mpass,mtel,memail,mgender) VALUES(?,?,?,?,?)";
+		String sql="INSERT INTO member (mnick,mpass,mtel,memail,mgender,miname) VALUES(?,?,?,?,?,?)";
 		
 		conn=ConnectionPool.get();  // 예외처리를 강제하는 애들. 예외처리도 처리해주자.
 		
@@ -24,6 +24,7 @@ public class DAOmember {
 			stmt.setString(3,mtel);
 			stmt.setString(4,memail);
 			stmt.setString(5,mgender);
+			stmt.setString(6,miname);
 			
 		int result=stmt.executeUpdate();
 		
@@ -84,6 +85,32 @@ public class DAOmember {
 		
 	}
 	
+	public static int update(String mpass, String mtel, String memail, String mgender, String miname, String mnick) throws NamingException, SQLException {
+
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		
+		String sql="UPDATE member SET mpass=?,mtel=?,memail=?,mgender=?,miname=? WHERE mnick=?";
+		
+		conn=ConnectionPool.get();
+		
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1,mnick);
+			stmt.setString(2,mpass);
+			stmt.setString(3,mtel);
+			stmt.setString(4,memail);
+			stmt.setString(5,mgender);
+			stmt.setString(6,miname);
+			
+		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
+		
+		return result;
+		
+	}
+	
 	public static ArrayList<DTOmember> getList() throws NamingException, SQLException {
 		
 		Connection conn=null;
@@ -106,7 +133,8 @@ public class DAOmember {
 							   rs.getString(5),
 							   rs.getString(6),
 							   rs.getString(7),
-							   rs.getString(8)));
+							   rs.getString(8),
+							   rs.getString(9)));
 		}
 		
 		rs.close();
@@ -137,10 +165,11 @@ public class DAOmember {
 		String mtel=rs.getString(4);
 		String memail=rs.getString(5);
 		String mgender=rs.getString(6);
-		String mlevel=rs.getString(7);
-		String mdate=rs.getString(8);
+		String miname=rs.getString(7);
+		String mlevel=rs.getString(8);
+		String mdate=rs.getString(9);
 		
-		DTOmember member=new DTOmember(mno,mnick,mpass,mtel,memail,mgender,mlevel,mdate);
+		DTOmember member=new DTOmember(mno,mnick,mpass,mtel,memail,mgender,miname,mlevel,mdate);
 		
 		rs.close();
 		stmt.close();

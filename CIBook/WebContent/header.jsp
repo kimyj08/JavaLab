@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>캐릭터 총집합 도감</title>
+<title>캐릭터 도감</title>
 	<!-- CSS only -->
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -40,7 +40,7 @@
 	            <li><a class="dropdown-item" href="cibooklist.jsp">도감목록</a></li>
 	            <li><a class="dropdown-item" href="cibookinputpage.jsp">도감생성</a></li>
 	            <li><hr class="dropdown-divider"></li>
-	            <li><a class="dropdown-item" href="cibookinfopage.jsp">내도감</a></li>
+	            <li><a class="dropdown-item" href="mycibooks.jsp">내도감</a></li>
 	            <li><a class="dropdown-item" href="cibooksub.jsp">도감구독</a></li>
 	          </ul>
 	        </li>
@@ -60,9 +60,17 @@
 	        </li>
 	        
 	        <li class="nav-item dropdown">
+	        <%-- <%
+	        	String mlevel=(String)session.getAttribute("mlevel");
+	        
+				if(mlevel.equals("1")) {
+			%> --%>
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            	관리자전용
 	          </a>
+			<%-- <% 
+				}
+			%> --%>
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="members.jsp">회원관리</a></li>
 	            <li><a class="dropdown-item" href="cibooks.jsp">도감관리</a></li>
@@ -73,6 +81,9 @@
 	          </ul>
 	        </li>
 	        
+	        <li class="nav-item">
+	          <a class="nav-link" href="information.jsp">INFO.</a>
+	        </li>
 	        
 	        <li class="nav-item">
 	          <a class="nav-link disabled">Disabled</a>

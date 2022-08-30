@@ -1,18 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="db.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도감 등록</title>
+<title>캐릭터 등록</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
+<%
+	if(mnick==null) {
+		out.print("<script>alert('로그인이 필요합니다.');</script>");
+		out.print("<script>location.href='loginpage.jsp'</script>");
+	} else {
+		DTOmember member=DAOmember.getDetail(mnick);
+%>
+
 	<div class="alert alert-secondary" role="alert">
 		<div class="container">
 			<h1 class="display-3">
-				도감 등록
+				캐릭터 등록
 			</h1>
 		</div>
 	</div>
@@ -34,7 +43,7 @@
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-sm-2">GENDER</label>
+				<label class="col-sm-2">CHARACTER-GENDER</label>
 				<div class="col-sm-8">
 					<div class="form-check form-check-inline">
 					  <input class="form-check-input" type="radio" name="cgender" id="inlineRadio1" value="남성">
@@ -52,44 +61,16 @@
 			</div>
 			
 			<div class="form-group row">
+				<label class="col-sm-2">FEATURE</label>
+				<div class="col-sm-8">
+					<textarea name="cft" rows="5" cols="20" class="form-control" placeholder="캐릭터 특징을 입력하세요"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group row">
 				<label class="col-sm-2">DESC.</label>
 				<div class="col-sm-8">
 					<textarea name="cdesc" rows="5" cols="20" class="form-control" placeholder="캐릭터 설명을 입력하세요"></textarea>
-				</div>
-			</div>
-			
-			<div class="form-group row">
-				<label class="col-sm-2">COLOR</label>
-				<div class="col-sm-8">
-					<select name="ccolor" class="form-select" size="8" aria-label="size 10 select example">
-					  <option selected>캐릭터의 색깔을 선택하세요.</option>
-					  <option value="pink">pink</option>
-					  <option value="red">red</option>
-					  <option value="orange">orange</option>
-					  <option value="yellow">yellow</option>
-					  <option value="green">green</option>
-					  <option value="blue">blue</option>
-					  <option value="purple">purple</option>
-					  <option value="black">black</option>
-					  <option value="whie">white</option>
-					  <option value="mix">mix</option>
-					</select>
-				</div>
-			</div>
-			
-			<div class="form-group row">
-				<label class="col-sm-2">CATEGORY</label>
-				<div class="col-sm-8">
-					<select name="cctgr" class="form-select" size="8" aria-label="size 6 select example">
-					  <option selected>캐릭터의 분류를 선택하세요.</option>
-					  <option value="1">만화</option>
-					  <option value="2">게임</option>
-					  <option value="3">디즈니</option>
-					  <option value="4">동화</option>
-					  <option value="5">문구/팬시</option>
-					  <option value="6">기타</option>
-					</select>
-					<!-- <input name="maddr" type="text" class="form-control" placeholder="주소(배송지)를 입력하세요"> -->
 				</div>
 			</div>
 			
@@ -113,16 +94,40 @@
 			</div>
 			
 			<div class="form-group row">
-				<div class="col-sm-5">
-				  <input type="file" name="image4" class="form-control" id="inputGroupFile02">
+				<label class="col-sm-2">OWNER</label>
+				<div class="col-sm-8">
+					<input name="cowner" type="text" class="form-control" value="<%=member.getMnick() %>" readonly>
+					
+			<div class="form-group row">
+				<label class="col-sm-2">ADDRESS</label>
+				<div class="col-sm-8">
+					<input name="caddr" type="text" class="form-control" placeholder="캐릭터의 개발지를 입력하세요(도로명주소 형식으로 입력하세요.)">
+				</div>
+			</div>
+<%
+	}
+%>
 				</div>
 			</div>
 			
-			<div class="form-group row">
-				<div class="col-sm-5">
-				  <input type="file" name="image5" class="form-control" id="inputGroupFile02">
+			<!-- <div class="form-group row">
+				<label class="col-sm-2">COLOR</label>
+				<div class="col-sm-8">
+					<select name="ccolor" class="form-select" size="8" aria-label="size 10 select example">
+					  <option selected>캐릭터의 색깔을 선택하세요.</option>
+					  <option value="pink">pink</option>
+					  <option value="red">red</option>
+					  <option value="orange">orange</option>
+					  <option value="yellow">yellow</option>
+					  <option value="green">green</option>
+					  <option value="blue">blue</option>
+					  <option value="purple">purple</option>
+					  <option value="black">black</option>
+					  <option value="whie">white</option>
+					  <option value="mix">mix</option>
+					</select>
 				</div>
-			</div>
+			</div> -->
 			
 			<div class="form-group-row">
 				<div class="col-sm-offset-2 col-sm-10">

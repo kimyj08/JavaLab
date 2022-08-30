@@ -18,7 +18,7 @@
 		// 로그인 성공 후 세션 넣기.
 		session.setAttribute("mnick",mnick);
 		
-		out.print("<script>alert('로그인 성공. 제품목록으로 이동');</script>");
+		out.print("<script>alert('로그인 성공. 도감목록으로 이동');</script>");
 		out.print("<script>location.href='cibooklist.jsp'</script>");
 		/* response.sendRedirect("welcome.jsp"); */
 	} else if(result==2) {
