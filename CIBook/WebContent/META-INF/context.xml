@@ -5,8 +5,8 @@
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/kmyj0226?serverTimezone=UTC"
-	username="kmyj0226"
-	password="dpwndpwn08!!"
+	username="cafe24계정"
+	password="cafe24db암호"
 	maxTotal="16"
 	maxIdle="4"
 	maxWaitMillis="-1"/>
