@@ -19,9 +19,4 @@
 		out.print("<script>location.href='memberinputpage0822.jsp'</script>");
 		/* response.sendRedirect("memberinputpage0822.jsp"); */
 	}
-
-
-
-
-
 %>

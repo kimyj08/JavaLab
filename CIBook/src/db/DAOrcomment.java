@@ -84,7 +84,7 @@ public class DAOrcomment {
 		return r;
 	}
 	
-	public static ArrayList<DTOrcomment> getMylist() throws NamingException, SQLException {
+	public static ArrayList<DTOrcomment> getMylist(String cid) throws NamingException, SQLException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -94,6 +94,7 @@ public class DAOrcomment {
 		
 		conn=ConnectionPool.get();
 		stmt=conn.prepareStatement(sql);
+			stmt.setString(1,cid);
 		rs=stmt.executeQuery();
 		
 		ArrayList<DTOrcomment> r=new ArrayList<DTOrcomment>();

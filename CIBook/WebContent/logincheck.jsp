@@ -14,9 +14,11 @@
 	// 3) 로그인 실패 (아아디가 없는 경우)-> '회원가입'으로 처리
 
 	if(result==1) {
+		String mlevel=DAOmember.getMlevel(mnick);
 		
 		// 로그인 성공 후 세션 넣기.
 		session.setAttribute("mnick",mnick);
+		session.setAttribute("mlevel",mlevel);
 		
 		out.print("<script>alert('로그인 성공. 도감목록으로 이동');</script>");
 		out.print("<script>location.href='cibooklist.jsp'</script>");

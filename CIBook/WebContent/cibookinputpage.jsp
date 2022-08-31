@@ -77,7 +77,7 @@
 			<div class="form-group row">
 				<!-- <label class="col-sm-2">IMAGE UPLOAD</label> -->
 				<div class="col-sm-8">
-				  <input type="file" name="image1" class="form-control" id="inputGroupFile02">
+				  <input type="file" name="image1" class="form-control" id="inputGroupFile01">
 				</div>
 			</div>
 			
@@ -89,7 +89,7 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-5">
-				  <input type="file" name="image3" class="form-control" id="inputGroupFile02">
+				  <input type="file" name="image3" class="form-control" id="inputGroupFile03">
 				</div>
 			</div>
 			
@@ -97,6 +97,8 @@
 				<label class="col-sm-2">OWNER</label>
 				<div class="col-sm-8">
 					<input name="cowner" type="text" class="form-control" value="<%=member.getMnick() %>" readonly>
+				</div>
+			</div>
 					
 			<div class="form-group row">
 				<label class="col-sm-2">ADDRESS</label>
@@ -107,8 +109,7 @@
 <%
 	}
 %>
-				</div>
-			</div>
+				
 			
 			<!-- <div class="form-group row">
 				<label class="col-sm-2">COLOR</label>

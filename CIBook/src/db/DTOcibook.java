@@ -13,7 +13,9 @@ public class DTOcibook {
 	private String cdesc;
 	private String cowner;
 	private String caddr;
+	private String cprice;
 	private String cdate;
+	private String ccnt;
 	
 	public String getCid() {
 		return cid;
@@ -81,15 +83,27 @@ public class DTOcibook {
 	public void setCaddr(String caddr) {
 		this.caddr = caddr;
 	}
+	public String getCprice() {
+		return cprice;
+	}
+	public void setCprice(String cprice) {
+		this.cprice = cprice;
+	}
 	public String getCdate() {
 		return cdate;
 	}
 	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
+	public String getCcnt() {
+		return ccnt;
+	}
+	public void setCcnt(String ccnt) {
+		this.ccnt = ccnt;
+	}
 	
 	public DTOcibook(String cid, String cname, String cbirth, String cgender, String ciname1, String ciname2,
-			String ciname3, String cft, String cdesc, String cowner, String caddr, String cdate) {
+			String ciname3, String cft, String cdesc, String cowner, String caddr, String cprice, String cdate, String ccnt) {
 		super();
 		this.cid = cid;
 		this.cname = cname;
@@ -102,7 +116,9 @@ public class DTOcibook {
 		this.cdesc = cdesc;
 		this.cowner = cowner;
 		this.caddr = caddr;
+		this.cprice= cprice;
 		this.cdate = cdate;
+		this.ccnt = ccnt;
 	}
 	
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>캐릭터 도감</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -40,7 +40,7 @@
 				
 			<h4>현재 접속 시간은 <%=now%> <%=hour %>시 <%=minute %>분 <%=second %>초 입니다.</h4>
 			<h4>현재 접속 시간은 <%=day %> 입니다.</h4>
-			<br>
+			<br><br><br>
 			<div class="text-center">
 				<p>
 				이곳은 캐릭터 도감 사이트 입니다.<br>
@@ -49,7 +49,8 @@
 				다른 사람들의 캐릭터를 구경하면서<br>
 				모두의 캐릭터들을 발전시켜 나가 보세요 :)<br>
 				</p>
-			</div>
+			</div><br><br>
+			<img class="mb-4 rounded" src="https://cdn.indiepost.co.kr/uploads/images/2018/09/20/6onQxy-700x541.jpeg" alt="대문사진" width="500"><br><br>
 		</div>
 	</div>
 	<%@ include file="footer.jsp" %>

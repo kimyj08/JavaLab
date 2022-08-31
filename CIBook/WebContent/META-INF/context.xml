@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-	<Resource name="jdbc/cibook"
+	<Resource name="jdbc/kmyj0226"
 	auth="Container"
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost:3306/cibook?serverTimezone=UTC"
-	username="root"
-	password="0000"
+	url="jdbc:mysql://localhost:3306/kmyj0226?serverTimezone=UTC"
+	username="kmyj0226"
+	password="dpwndpwn08!!"
 	maxTotal="16"
 	maxIdle="4"
 	maxWaitMillis="-1"/>

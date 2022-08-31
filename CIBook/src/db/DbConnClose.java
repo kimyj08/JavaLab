@@ -16,9 +16,9 @@ public class DbConnClose {
 		
 		Connection conn=null;
 		
-		String url="jdbc:mysql://localhost:3306/cibook";
-		String id="root";
-		String pw="0000";
+		String url="jdbc:mysql://localhost:3306/kmyj0226";
+		String id="kmyj0226";
+		String pw="dpwndpwn08!!";
 		
 		try {
 			conn=DriverManager.getConnection(url,id,pw);

@@ -108,7 +108,7 @@
                 url:'/v2/user/me',
                 success: res => {
                     const kakaoAccount = res.kakao_account;
-					location.href='kakaocheck.jsp?mname=' + kakaoAccount.profile.nickname
+					location.href='kakaocheck.jsp?mnick=' + kakaoAccount.profile.nickname
 							+ '&memail=' + kakaoAccount.email
 							+ '&mgender=' + kakaoAccount.gender
 ;

@@ -30,8 +30,7 @@
 	        <li class="nav-item">
 	          <a class="nav-link disabled" href="#">Link</a>
 	        </li>
-	        
-	        
+
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            	도감
@@ -40,7 +39,15 @@
 	            <li><a class="dropdown-item" href="cibooklist.jsp">도감목록</a></li>
 	            <li><a class="dropdown-item" href="cibookinputpage.jsp">도감생성</a></li>
 	            <li><hr class="dropdown-divider"></li>
+	            <%
+            		String mnick=(String)session.getAttribute("mnick");
+	            
+	            	if(mnick!=null) {
+	            %>
 	            <li><a class="dropdown-item" href="mycibooks.jsp">내도감</a></li>
+	            <%
+	            	}
+	            %>
 	            <li><a class="dropdown-item" href="cibooksub.jsp">도감구독</a></li>
 	          </ul>
 	        </li>
@@ -52,25 +59,40 @@
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="loginpage.jsp">로그인</a></li>
 	            <li><a class="dropdown-item" href="logoutpage.jsp">로그아웃</a></li>
+	            <%
+	            	if(mnick!=null) {
+	            %>
 	            <li><a class="dropdown-item" href="meminfopage.jsp">내정보</a></li>
+	            <%
+	            	}
+	            %>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="memberinputpage.jsp">회원가입</a></li>
+	            <%
+	            	if(mnick!=null) {
+	            %>
 	            <li><a class="dropdown-item" href="memberoutpage.jsp">회원탈퇴</a></li>
+	            <%
+	            	}
+	            %>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	        <%-- <%
-	        	String mlevel=(String)session.getAttribute("mlevel");
+	        <%
+	        	if(session.getAttribute("mlevel")!=null) {
+	        		
+	        		String mlevel=(String)session.getAttribute("mlevel");
 	        
-				if(mlevel.equals("1")) {
-			%> --%>
+					if(mlevel.equals("1")) {
+			%>
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            	관리자전용
 	          </a>
-			<%-- <% 
+			<% 
+					}
 				}
-			%> --%>
+			%>
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="members.jsp">회원관리</a></li>
 	            <li><a class="dropdown-item" href="cibooks.jsp">도감관리</a></li>
@@ -95,8 +117,6 @@
 	      </form> --> 
 	      <div class="text-white">
 		    <%
-			  String mnick=(String)session.getAttribute("mnick");
-		    
 		      if(mnick!=null) {
 		    	  out.print(mnick+"님 로그인 상태입니다.");
 		      } else {

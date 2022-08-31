@@ -25,6 +25,8 @@
 <%
 	String no=request.getParameter("cid");
 
+	DAOcibook.updateCnt(no);
+
 	DTOcibook cibook=DAOcibook.getDetail(no);
 	
 	String img1=cibook.getCiname1();
@@ -49,9 +51,9 @@
 	}
 %>
 
-	<img src="<%=imgstr1 %>" class="rounded mx-auto d-block w-150 h-150" alt="사진">
-	<img src="<%=imgstr2 %>" class="rounded mx-auto d-block w-150 h-150" alt="사진">
-	<img src="<%=imgstr3 %>" class="rounded mx-auto d-block w-150 h-150" alt="사진">
+	<img src="<%=imgstr1 %>" class="rounded mx-auto d-block" alt="사진" width="500">
+	<img src="<%=imgstr2 %>" class="rounded mx-auto d-block" alt="사진" width="500">
+	<img src="<%=imgstr3 %>" class="rounded mx-auto d-block" alt="사진" width="500">
 	
 	<%-- <div class="container">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -87,7 +89,7 @@
 	<br>
 	
 	<div class="container text-center">
-		<div class="card align-middle text-center border-info text-dark bg-light mb-3 m-auto" style="max-width: 18rem;">
+		<div class="card align-middle text-center border-info text-dark bg-light mb-3 m-auto" style="max-width: 30rem;">
 			<div class="card-header">
 		    	no. : <%=cibook.getCid() %><br>
 			</div>
@@ -102,6 +104,8 @@
 								filename3 : <%=cibook.getCiname3() %><br>
 								owner : <%=cibook.getCowner() %><br>
 								address : <%=cibook.getCaddr() %><br>
+								subscribe-price : 월 &nbsp;&nbsp;<%=cibook.getCprice() %> 원<br>
+								page-count : <%=cibook.getCcnt() %><br>
 				</p>
 				</div>
 		</div>	
@@ -152,23 +156,44 @@
 	
 	<br><br>
 
-		<a class="btn btn-info" href="cibooklist.jsp" role="button">목록보기</a><br><br>
-		<%-- <a class="btn btn-info" href="deliverypage.jsp?cid=<%=cibook.getCid() %>&cname=<%=cibook.getCname() %>&cprice=<%=cibook.getCprice() %>" role="button">구독(후원)</a><br><br><br> --%>
+		<a class="btn btn-info" href="cibooklist.jsp" role="button">도감 목록</a><br><br>
+		<%
+		if(mnick!=null) {
+			if(mnick.equals(cibook.getCowner())) {
+		%>
+		<a class="btn btn-info" href="javascript:history.back();" role="button">내 도감 목록</a><br><br>
+		<%
+			}
+		}
+		%>
+		<a class="btn btn-info" href="cibooksubpage.jsp?cid=<%=cibook.getCid() %>&cname=<%=cibook.getCname() %>&cprice=<%=cibook.getCprice() %>" role="button">구독(후원)</a><br><br><br>
+		
+		<br><br>
+		<%
+		if(mnick!=null) {
+			if(mnick.equals(cibook.getCowner())) {
+		%>
+		<a class="btn btn-warning" href="cibookeditpage.jsp?cid=<%=cibook.getCid() %>" role="button">도감 수정</a><br><br>
+		<%
+			}
+		}
+		%>
 		<a class="btn btn-secondary" href="cibookinputpage.jsp" role="button">새 캐릭터 등록</a>
+		
 	</div>
 	
 	<br><br>
 	
+	<%
+	if(mnick!=null) {
+	%>
 	<div class="container">
 		<form action="rcommentinput.jsp" method="post">
 			<div class="form-group row">
 				<label class="col-sm-1">댓글달기</label>
 				<div class="col-sm-2">
-				<%
-					DTOmember member=DAOmember.getDetail(mnick);
-				%>
 					<input name="rcid" type="hidden" value="<%=cibook.getCid() %>">
-					<input name="rnick" type="text" class="form-control" value="<%=member.getMnick() %>" readonly>
+					<input name="rnick" type="text" class="form-control" value="<%=mnick %>" readonly>
 					<!-- 비회원도 댓글 달 수 있도록 처리하기. 비회원일 경우 아이디가 guest로 자동입력 되도록 처리하기. -->
 				</div>
 				<div class="col-sm-6">
@@ -188,6 +213,9 @@
 			
 		</form>
 	</div>
+	<%
+	}
+	%>
 	
 	<br><br>
 	
@@ -210,7 +238,7 @@
 		  <tbody>
 				    
 <%
-   	ArrayList<DTOrcomment> r=DAOrcomment.getMylist();
+   	ArrayList<DTOrcomment> r=DAOrcomment.getMylist(cibook.getCid());
 
 		for(DTOrcomment rcomment:r) {			
 %>		

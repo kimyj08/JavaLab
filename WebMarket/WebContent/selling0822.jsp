@@ -47,10 +47,10 @@
 		  <tbody>
 				    
 <%
-   	ArrayList<DTOdelivery0822> d=DAOdelivery0822.getList();
+				    	ArrayList<DTOdelivery0822> d=DAOsubscribe.getList();
 
- 		    	for(DTOdelivery0822 delivery:d) {
-%>		
+				     		    	for(DTOdelivery0822 delivery:d) {
+				    %>		
 	
 		    <tr>
 		      <th scope="row"><%=delivery.getDid() %></th>

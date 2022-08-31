@@ -22,7 +22,7 @@
 	</div>
 	
 	<div class="container w-70">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover" style="text-align:center">
 		  <thead>
 		    <tr>
 		      <th scope="col">NO.</th>
@@ -30,6 +30,7 @@
 		      <th scope="col">FEATURE</th>
 		      <th scope="col">DESC.</th>
 		      <th scope="col">THUMBNAIL</th>
+		      <th scope="col">P-CNT</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -45,7 +46,8 @@
 		      <td><a href="cibookdetail.jsp?cid=<%=cibook.getCid() %>"><%=cibook.getCname() %></a></td>
 		      <th scope="row"><%=cibook.getCft() %></th>
 		      <th scope="row"><%=cibook.getCdesc() %></th>
-		      <th scope="row"><img src="images/<%=cibook.getCiname1() %>" width="70" height="70" class="rounded mx-auto d-block" alt="사진"></th>
+		      <th scope="row"><img src="images/<%=cibook.getCiname1() %>" width="100" class="rounded mx-auto d-block" alt="사진"></th>
+		      <th scope="row"><%=cibook.getCcnt() %></th>
 		    </tr>
 		    
 <% 

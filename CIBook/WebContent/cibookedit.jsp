@@ -18,8 +18,8 @@
 	String cgender=null;
 	String cft=null;
 	String cdesc=null;
-	String cowner=null;
 	String caddr=null;
+	String cid=null;
 	
 	String ciname1=null;
 	byte[] cifile1=null;
@@ -50,10 +50,10 @@
 				cft=value;
 			} else if(name.equals("cdesc")) {
 				cdesc=value;
-			} else if(name.equals("cowner")) {
-				cowner=value;
 			} else if(name.equals("caddr")) {
 				caddr=value;
+			} else if(name.equals("cid")) {
+				cid=value;
 			}
 		} else {
 			if(name.equals("image1")) {
@@ -78,8 +78,8 @@
 		}
 	}
 	
-	DAOcibook.insert(cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,cowner,caddr);
+	DAOcibook.update(cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,caddr,cid);
 	
-	response.sendRedirect("cibooklist.jsp");
+	response.sendRedirect("cibookdetail.jsp?cid="+cid);
 			
 %>

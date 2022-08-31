@@ -38,7 +38,7 @@
 	<br><br>
 	
 	<div class="container text-center">
-		<div class="card align-middle text-center border-info text-dark bg-light mb-3 m-auto" style="max-width: 18rem;">
+		<div class="card align-middle text-center border-info text-dark bg-light mb-3 m-auto" style="max-width: 30rem;">
 			<div class="card-header">
 		    	no. : <%=member.getMno() %><br>
 			</div>

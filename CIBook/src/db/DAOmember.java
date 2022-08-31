@@ -51,12 +51,21 @@ public class DAOmember {
 		rs=stmt.executeQuery();
 		
 		if(!rs.next()) {
+			rs.close();
+			stmt.close();
+			conn.close();
 			return 3; // 아이디, 비번 모두 없는 비회원.
 		}
 		
 		if(mpass.equals(rs.getString("mpass"))) {
+			rs.close();
+			stmt.close();
+			conn.close();
 			return 1; // 문제 없는 회원.
 		} else {
+			rs.close();
+			stmt.close();
+			conn.close();
 			return 2; // 비번이 틀린 회원.
 		}
 		
@@ -78,8 +87,14 @@ public class DAOmember {
 		rs=stmt.executeQuery();
 		
 		if(!rs.next()) {
+			rs.close();
+			stmt.close();
+			conn.close();
 			return 3; // 아이디, 비번 모두 없는 비회원. -> 회원 가입.
 		} else {
+			rs.close();
+			stmt.close();
+			conn.close();
 			return 1; // 없어도 되는데 오류나서 임시로.
 		}
 		
@@ -95,12 +110,12 @@ public class DAOmember {
 		conn=ConnectionPool.get();
 		
 		stmt=conn.prepareStatement(sql);
-			stmt.setString(1,mnick);
-			stmt.setString(2,mpass);
-			stmt.setString(3,mtel);
-			stmt.setString(4,memail);
-			stmt.setString(5,mgender);
-			stmt.setString(6,miname);
+			stmt.setString(1,mpass);
+			stmt.setString(2,mtel);
+			stmt.setString(3,memail);
+			stmt.setString(4,mgender);
+			stmt.setString(5,miname);
+			stmt.setString(6,mnick);
 			
 		int result=stmt.executeUpdate();
 		
@@ -199,6 +214,30 @@ public class DAOmember {
 		
 		return result;
 
+	}
+	
+	public static String getMlevel(String mnick) throws NamingException, SQLException {
+		
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT mlevel FROM member WHERE mnick=?";
+		
+		conn=ConnectionPool.get();
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1, mnick);
+		rs=stmt.executeQuery();
+		
+		rs.next();
+		
+		String mlevel=rs.getString("mlevel");
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return mlevel;
 	}
 	
 }

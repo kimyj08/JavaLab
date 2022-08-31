@@ -33,10 +33,10 @@
   <tbody>
   
   <%
-ArrayList<DTOdelivery0822> deliverys = DAOdelivery0822.getList();
+    	ArrayList<DTOdelivery0822> deliverys = DAOsubscribe.getList();
 
-for (DTOdelivery0822 delivery : deliverys) {
-%>		
+    for (DTOdelivery0822 delivery : deliverys) {
+    %>		
       <script>
 				function confirm_onClick() {
 					var answer = confirm("상태를 변경하시겠습니까?");

@@ -13,11 +13,7 @@
 <%@ include file="header.jsp" %>
 
 <%
-	if(mnick==null) {
-		out.print("<script>alert('로그인이 필요합니다.');</script>");
-		out.print("<script>location.href='loginpage.jsp'</script>");
-	} else {
-		DTOmember member=DAOmember.getDetail(mnick);
+	DTOmember member=DAOmember.getDetail(mnick);
 %>
 
 	<div class="alert alert-secondary" role="alert">
@@ -88,7 +84,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2">PROFILE IMAGE</label>
 				<div class="col-sm-8">
-				  <input type="file" name="image" class="form-control" id="inputGroupFile02" onchange="setThumbnail(event);">
+				  <input type="file" name="image" class="form-control" id="inputGroupFile01" onchange="setThumbnail(event);">
 				</div>
 			</div>
 			
@@ -101,9 +97,6 @@
 					type:'text/plain',
 					lastModified:new Date(),
 				});
-<%
-	}
-%>
 				
 				//Now let's create a DataTransfer to get a Filelist
 				const dataTransfer=new DataTransfer();
@@ -125,6 +118,7 @@
 					var img = document.createElement("img");
 					img.setAttribute("src", event.target.result);
 					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#image_container").innerHTML="";
 					document.querySelector("div#image_container").appendChild(img);
 				};
 				

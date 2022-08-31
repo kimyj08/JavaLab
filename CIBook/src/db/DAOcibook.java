@@ -37,13 +37,43 @@ public class DAOcibook {
 		return result;
 	}	
 	
+	public static int update(String cname, String cbirth, String cgender, String ciname1, String ciname2, String ciname3, String cft, String cdesc, String caddr, String cid) throws NamingException, SQLException {
+
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		
+		String sql="UPDATE cibook SET cname=?,cbirth=?,cgender=?,ciname1=?,ciname2=?,ciname3=?,cft=?,cdesc=?,caddr=? WHERE cid=?";
+		
+		conn=ConnectionPool.get();
+		
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1,cname);
+			stmt.setString(2,cbirth);
+			stmt.setString(3,cgender);
+			stmt.setString(4,ciname1);
+			stmt.setString(5,ciname2);
+			stmt.setString(6,ciname3);
+			stmt.setString(7,cft);
+			stmt.setString(8,cdesc);
+			stmt.setString(9,caddr);
+			stmt.setString(10,cid);
+			
+		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
+		
+		return result;
+		
+	}
+	
 	public static ArrayList<DTOcibook> getList() throws NamingException, SQLException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		
-		String sql="SELECT * FROM cibook";
+		String sql="SELECT * FROM cibook ORDER BY ccnt DESC";
 		
 		conn=ConnectionPool.get();
 		stmt=conn.prepareStatement(sql);
@@ -63,7 +93,9 @@ public class DAOcibook {
 							   rs.getString(9),
 							   rs.getString(10),
 							   rs.getString(11),
-							   rs.getString(12)));
+							   rs.getString(12),
+							   rs.getString(13),
+							   rs.getString(14)));
 		}
 		
 		rs.close();
@@ -74,7 +106,7 @@ public class DAOcibook {
 		
 	}
 	
-	public static ArrayList<DTOcibook> getMylist() throws NamingException, SQLException {
+	public static ArrayList<DTOcibook> getMylist(String mnick) throws NamingException, SQLException {
 		
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -84,6 +116,7 @@ public class DAOcibook {
 		
 		conn=ConnectionPool.get();
 		stmt=conn.prepareStatement(sql);
+			stmt.setString(1, mnick);
 		rs=stmt.executeQuery();
 		
 		ArrayList<DTOcibook> c=new ArrayList<DTOcibook>();
@@ -100,7 +133,9 @@ public class DAOcibook {
 							   rs.getString(9),
 							   rs.getString(10),
 							   rs.getString(11),
-							   rs.getString(12)));
+							   rs.getString(12),
+							   rs.getString(13),
+							   rs.getString(14)));
 		}
 		
 		rs.close();
@@ -136,17 +171,38 @@ public class DAOcibook {
 		String cft=rs.getString(8);
 		String cdesc=rs.getString(9);
 		String cowner=rs.getString(10);
-		String cdate=rs.getString(11);
-		String caddr=rs.getString(12);
+		String caddr=rs.getString(11);
+		String cprice=rs.getString(12);
+		String cdate=rs.getString(13);
+		String ccnt=rs.getString(14);
 		
-		DTOcibook product=new DTOcibook(cid,cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,cowner,cdate,caddr);
+		DTOcibook cibook=new DTOcibook(cid,cname,cbirth,cgender,ciname1,ciname2,ciname3,cft,cdesc,cowner,caddr,cprice,cdate,ccnt);
 		
 		rs.close();
 		stmt.close();
 		conn.close();
 		
-		return product;
+		return cibook;
 		
+	}
+	
+	public static int updateCnt(String cid) throws NamingException, SQLException {
+		
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		
+		String sql="UPDATE cibook SET ccnt=ccnt+1 WHERE cid=?";
+		
+		conn=ConnectionPool.get();
+		stmt=conn.prepareStatement(sql);
+			stmt.setString(1, cid);
+		
+		int result=stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
+		
+		return result;
 	}
 	
 }

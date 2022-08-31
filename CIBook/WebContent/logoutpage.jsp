@@ -8,7 +8,9 @@
 </head>
 <body>
 <%
-	session.removeAttribute("mnick");
+	session.invalidate();
+//	session.removeAttribute("mnick");
+//	session.removeAttribute("mlevel");
 
 	out.print("<script>alert('로그아웃 되었습니다.');</script>");
 	out.print("<script>location.href='loginpage.jsp'</script>");
